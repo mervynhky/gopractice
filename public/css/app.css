@@ -1,0 +1,69 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Droid Sans', sans-serif;
+    background-image: url("../img/blurbeigebg.jpg");
+    background-size: cover;
+}
+
+article {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+blockquote {
+    padding: 0 15px;
+    max-width: 800px;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+blockquote p:last-child {
+    padding-top: 3px;
+}
+
+/*
+=================
+Classes
+=================
+*/
+.home_text {
+    -webkit-animation-name: flash;
+    animation-name: flash;
+}
+
+.login-logo {
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 255px);
+    z-index: 2;
+}
+
+/*
+=================
+Comments or Notes
+=================
+*/
+
+
+/*
+=================
+MEDIA QUERIES
+=================
+*/
+
+/*LESS THAN 460px*/
+@media all and (max-width: 460px) {
+
+}
+
+/*GREATER THAN 460px*/
+@media all and (min-width: 460px) {
+
+}

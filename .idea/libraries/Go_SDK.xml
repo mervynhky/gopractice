@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="Go SDK">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../SDK/go_appengine_sdk_windows_amd64-1.9.31/go_appengine/goroot/src" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
