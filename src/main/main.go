@@ -1,17 +1,6 @@
 package main
 
 import (
-<<<<<<< Updated upstream
-    "net/http"
-    "io/ioutil"
-    "strings"
-    "log"
-)
-
-type MyHandler struct {
-}
-
-=======
 	"net/http"
 //	"github.com/gorilla/mux"
 	"github.com/gorilla/securecookie"
@@ -21,7 +10,6 @@ type MyHandler struct {
 	"strings"
 	"log"
 )
-
 var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(64),
 	securecookie.GenerateRandomKey(32))
@@ -40,7 +28,6 @@ type MyHandler struct {
 // but with the (this *MyHandler) it becomes a method of any instance of  MyHandler	///
 // so, MyHandler receives the method ServeHTTP										///
 ///////////////////////////////////////////////////////////////////////////////////////
->>>>>>> Stashed changes
 func (this *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
 	log.Println(path)
@@ -70,17 +57,6 @@ func (this *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("404 Mi amigo - " + http.StatusText(404)))
 	}
 }
-<<<<<<< Updated upstream
-
-func main() {
-    http.Handle("/", new(MyHandler))
-    http.ListenAndServe(":8080", nil)
-}
-
-/*
-
-*/
-=======
 
 /////////////////////////////////////////////////////////////////////////////////////
 /// loginHandler reads the name and password from the submitted form,             ///
@@ -174,5 +150,3 @@ func main() {
 //		redirectTarget="http://localhost:7998/templates/hometest.html"
 //		http.Redirect(resp, req, redirectTarget, http.StatusFound)
 //	}
-//}
->>>>>>> Stashed changes
