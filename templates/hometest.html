@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pantonius Home</title>
+    <meta name='description' content='descrip'>
+    <meta name='keywords' content='keywords'>
+    <meta name='author' content='author'>
+    <link rel="stylesheet" type="text/css" href="../public/css/home/slidemenu.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/home/jquery.fullPage.css"/>
+    <link rel="stylesheet" type="text/css" href="../public/css/home/example.css" />
+    <!--[if IE]>
+    <script type="text/javascript">
+        var console = { log: function() {} };
+    </script>
+    <![endif]-->
+    <script src="../src/js/jquery/jquery-1.8.3.min.js"></script>
+    <script src="../src/js/jquery/jqueryui-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../src/js/home/jquery.fullPage.js"></script>
+    <script type="text/javascript" src="../src/js/home/examples.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                sectionsColor: ['#B1EAFC', '#4BBFC3', '#DEB5FF', 'whitesmoke', '#ccddff'],
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+                menu: '#menu',
+                scrollingSpeed: 1000
+            });
+        });
+
+        $(window).load(function() {
+            $(".btn-nav").on("click tap", function() {
+                $(".nav-container").toggleClass("showNav hideNav").removeClass("hidden");
+                $(this).toggleClass("animated");
+            });
+        });
+
+        function system_control(){
+            alert("system control");
+        }
+
+        function user_mgt(){
+            alert("this is user mgt");
+        }
+
+    </script>
+
+    <style>
+        #section0 img,
+        #section1 img{
+            margin: 20px 0 0 0;
+        }
+        #section2 img{
+            margin: 20px 0 0 52px;
+        }
+        #section3 img{
+            margin: 20px 0 0 0;
+        }
+        .intro p{
+            width: 50%;
+            margin: 0 auto;
+            font-size: 1.5em;
+        }
+    </style>
+
+</head>
+<body>
+<button class="btn-nav" style="position:absolute; top:30px;">
+    <div class="bar arrow-top-r"></div>
+    <div class="bar arrow-middle-r"></div>
+    <div class="bar arrow-bottom-r"></div>
+</button>
+<nav class="nav-container hidden hideNav">
+    <ul class="nav-list">
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#firstPage"><i class="fa fa-home"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#secondPage"><i class="fa fa-cogs"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#secondPage/1"><i class="fa fa-user"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#secondPage/2"><i class="fa fa-users"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#secondPage/3"><i class="fa  fa-object-group"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#3rdPage"><i class="fa fa-sitemap"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#3rdPage/1"><i class="fa fa-paint-brush"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#3rdPage/2"><i class="fa fa-pencil"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#3rdPage/3"><i class="fa fa-exclamation-triangle"></i></a></li>
+        <li class="list-item"><a href="http://localhost:7998/templates/hometest.html#4thpage"><i class="fa fa-briefcase"></i></a></li>
+    </ul>
+</nav>
+<div id="fullpage">
+
+    <div class="section " id="section0">
+        <h1>Pantonius 10</h1>
+        <p>The MCRE EDMS</p>
+        <img src="imgs/HTLogo.png"/>
+    </div>
+    <div class="section" id="section1">
+        <div class="slide" onclick="system_control()">
+            <div class="intro">
+                <h1>System Control</h1>
+                <p>Manage Everything Here!</p>
+                <img src="imgs/iphone-blue.png"/>
+            </div>
+
+        </div>
+        <div class="slide" onclick="user_mgt()">
+            <div class="intro">
+                <img src="imgs/1.png"/>
+                <h1>User Management</h1>
+                <p>Manage the Users here</p>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="intro">
+                <img src="imgs/2.png"/>
+                <h1>Group Management</h1>
+                <p>Manage the Groups here</p>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="intro">
+                <img src="imgs/3.png"/>
+                <h1>Workspace Management</h1>
+                <p>Manage the Workspace here</p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="section2">
+        <div class="slide">
+            <div class="intro">
+                <h1>Process Organizer</h1>
+                <p>Create processes and design workflows here</p>
+                <img src="imgs/workflow.png"/>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="intro">
+                <h1>Workflow Designer</h1>
+                <p>Create processes and design workflows here</p>
+                <img src="imgs/1.png"/>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="intro">
+                <h1>Form Designer</h1>
+                <p>Create processes and design workflows here</p>
+                <img src="imgs/2.png"/>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="intro">
+                <h1>Notification Setup</h1>
+                <p>Create processes and design workflows here</p>
+                <img src="imgs/3.png"/>
+            </div>
+        </div>
+        <div class="intro">
+            <h1>Process Organizer</h1>
+            <p>Create processes and design workflows here</p>
+            <img src="imgs/workflow.png"/>
+        </div>
+    </div>
+    <div class="section" id="section3">
+        <div class="intro">
+            <h1>Task Manager</h1>
+            <p>
+                Manage your tasks here
+            </p>
+            <img style="width:409px;height:249px;" src="imgs/taskmanager.png"/>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

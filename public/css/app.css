@@ -8,6 +8,17 @@ body {
     background-size: cover;
 }
 
+/*.bg_img{*/
+    /*width:100%;*/
+    /*height:100%;*/
+    /*z-index:1*/
+    /*-webkit-filter: blur(5px);*/
+    /*-moz-filter: blur(5px);*/
+    /*-o-filter: blur(5px);*/
+    /*-ms-filter: blur(5px);*/
+    /*filter: blur(5px);*/
+/*}*/
+
 article {
     display: flex;
     flex-flow: column wrap;
