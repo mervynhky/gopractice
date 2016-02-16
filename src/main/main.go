@@ -131,7 +131,7 @@ func main() {
 //	router.GET("/templates/login", loginHandler)
 //  /templates/loginverify.html
 
-	http.HandleFunc("/loginverify", login)
+	http.HandleFunc("/loginverify", loginHandler)
 	http.Handle("/", new(MyHandler))
 	http.ListenAndServe(":7998", nil)
 }
