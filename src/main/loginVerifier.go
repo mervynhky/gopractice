@@ -2,19 +2,24 @@ package main
 
 import (
 	"net/http"
+	"log"
 )
 
-func login(resp http.ResponseWriter, req *http.Request) {
-	var redirectTarget = "/"
-	name := req.FormValue("username")
-	password := req.FormValue("password")
-	if name != "" && password != ""{
-		setSession(name,resp)
-		redirectTarget="/templates/hometest.html"
+var ターゲットをリダイレクト = "/"
+
+func ログイン (レスポンス http.ResponseWriter, 要求 *http.Request){
+	名前 := 要求.FormValue("username")
+	パスワード := 要求.FormValue("password")
+	log.Println("名前 " + 名前)
+	log.Println("パスワード " + パスワード)
+	if 名前 != "tada" && パスワード != "tada"{
+		setSession(名前,レスポンス)
+		ターゲットをリダイレクト="/templates/hometest.html"
+		http.Redirect(レスポンス, 要求, ターゲットをリダイレクト, http.StatusMovedPermanently)
 	}
-	http.Redirect(resp, req, redirectTarget, 302)
 }
 
-func logout(){
-
+func ログアウト(レスポンス http.ResponseWriter, 要求 *http.Request){
+	clearSession(レスポンス)
+	http.Redirect(レスポンス, 要求, "templates/login.html", 302)
 }

@@ -34,23 +34,21 @@
             });
         });
 
-function submitLogin(){
-//using ajax to send values to loginhandler in main.go
-    var username = $('#username').val();
-    var password = $('#password').val();
-    if(username == null || password == null || username == "" || password == ""){
-        alert("Please check your username and/or password.")
-        return false ;
-    }
+    function submitLogin(){
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if(username == null || password == null || username == "" || password == ""){
+            alert("Please check your username and/or password.")
+            return false ;
+        }
 
-    $.post("http://localhost:7998/loginverify", {
-        type: 'POST',
-        username: username,
-        password: password
-    })
-//hardcoding to test main.go loginHandler, will revise on reading value in main.go later.
-//    window.location.href = "loginverify.html";
-}
+        $.post("http://localhost:7998/loginverify", {
+            type: 'POST',
+            username: username,
+            password: password
+        })
+        window.location.href = "http://localhost:7998/templates/hometest.html"
+    }
 </script>
 <!--
 ********************
@@ -71,7 +69,6 @@ function submitLogin(){
             <input type="text" id="username" placeholder="username" name="username" on><br>
             <input type="password" id="password" placeholder="password" name="password"><br>
             <input type="button" id="loginButton" value="Login" onclick="submitLogin()"><br>
-            <!--onclick="submitLogin()"-->
         </form>
     </div>
 </body>

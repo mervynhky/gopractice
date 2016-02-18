@@ -53,28 +53,34 @@ func (this *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content Type", contentType)
 		w.Write(data)
 	} else {
-		w.WriteHeader(404)
-		w.Write([]byte("404 Mi amigo - " + http.StatusText(404)))
+		http.Redirect(w, r, "/templates/errorpage.html", http.StatusMovedPermanently)
+//		w.WriteHeader(404)
+//		w.Write([]byte("404 Mi amigo - " + http.StatusText(404)))
 	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
 /// loginHandler reads the name and password from the submitted form,             ///
 /// then if the credientials pass the sophisticated check,                        ///
-// the username is stored in a session, then a redirect to the homepage is sent.  ///
+/// the username is stored in a session, then a redirect to the homepage is sent. ///
 /// if it fails the check, clear any existing session and redirect to login page. ///
 /// Will add a "loginfailed" page in future.                                      ///
 /////////////////////////////////////////////////////////////////////////////////////
-func loginHandler (レスポンス http.ResponseWriter, 要求 *http.Request){
-	var ターゲットをリダイレクト = "/"
-	名前 := 要求.FormValue("username")
-	パスワード := 要求.FormValue("password")
-	if 名前 != "tada" && パスワード != "tada"{
-		setSession(名前,レスポンス)
-		ターゲットをリダイレクト="/templates/hometest.html"
-		http.Redirect(レスポンス, 要求, ターゲットをリダイレクト, http.StatusFound)
+func loginHandler (resp http.ResponseWriter, req *http.Request) {
+//	var redirectTarget = "/"
+	name := req.FormValue("username")
+	password := req.FormValue("password")
+ 	log.Println("name is " + name)
+	log.Println("pw is " + password)
+	if name != "tada" && password != "tada" {
+		log.Println("it came inside")
+		setSession(name, resp)
+		http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
+//		redirectTarget = "/templates/hometest.html"
 	}
+//	http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 /// setSession puts the username into a simple string map.                      ///
@@ -141,12 +147,3 @@ func main() {
 //    router.HandleFunc("/logout", logoutHandler).Methods("POST")
 //    router.HandleFunc("/templates/login", loginHandler).Methods("POST")
 */
-//func loginHandler (resp http.ResponseWriter, req *http.Request){
-//	var redirectTarget = "/"
-//	name := req.FormValue("username")
-//	password := req.FormValue("password")
-//	if name != "tada" && password != "tada"{
-//		setSession(req,resp)
-//		redirectTarget="http://localhost:7998/templates/hometest.html"
-//		http.Redirect(resp, req, redirectTarget, http.StatusFound)
-//	}
