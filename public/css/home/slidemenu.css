@@ -90,7 +90,7 @@ button::-moz-focus-inner {
     left: -50%;
     top: 0;
     /*background: #CD5334;*/
-    background:dimgrey;
+    background:#212121 ;
     height: 100%;
     width: 250px;
     z-index:3;

@@ -72,11 +72,13 @@ func loginHandler (resp http.ResponseWriter, req *http.Request) {
 	password := req.FormValue("password")
  	log.Println("name is " + name)
 	log.Println("pw is " + password)
-	if name != "tada" && password != "tada" {
+	if name != "tada" && password != "tada" && name == "rootonium" && password == "root"{
 		log.Println("it came inside")
 		setSession(name, resp)
 		http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
 //		redirectTarget = "/templates/hometest.html"
+	} else {
+		http.Redirect(resp,req, "/templates/login.html", http.StatusMovedPermanently)
 	}
 //	http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
 }

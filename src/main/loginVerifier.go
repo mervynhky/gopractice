@@ -16,10 +16,14 @@ func ログイン (レスポンス http.ResponseWriter, 要求 *http.Request){
 		setSession(名前,レスポンス)
 		ターゲットをリダイレクト="/templates/hometest.html"
 		http.Redirect(レスポンス, 要求, ターゲットをリダイレクト, http.StatusMovedPermanently)
+	} else {
+		ターゲットをリダイレクト="/templates/login.html"
+		http.Redirect(レスポンス, 要求, ターゲットをリダイレクト, http.StatusMovedPermanently)
 	}
 }
 
 func ログアウト(レスポンス http.ResponseWriter, 要求 *http.Request){
 	clearSession(レスポンス)
-	http.Redirect(レスポンス, 要求, "templates/login.html", 302)
+	ターゲットをリダイレクト = "/templates/login.html"
+	http.Redirect(レスポンス, 要求, ターゲットをリダイレクト, http.StatusFound)
 }

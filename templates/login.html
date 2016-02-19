@@ -41,13 +41,23 @@
             alert("Please check your username and/or password.")
             return false ;
         }
-
         $.post("http://localhost:7998/loginverify", {
             type: 'POST',
             username: username,
             password: password
         })
         window.location.href = "http://localhost:7998/templates/hometest.html"
+//        $.post("http://localhost:7998/loginverify", {
+//            type: 'POST',
+//            username: username,
+//            password: password
+//        }, function(verified){
+//            if(verified == null){
+//                window.location.href = "http://localhost:7998/templates/hometest.html"
+//            } else {
+//                window.location.href = "http://localhost:7998/templates/login.html"
+//            }
+//        })
     }
 </script>
 <!--
