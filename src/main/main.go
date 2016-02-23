@@ -9,6 +9,8 @@ import (
 	"io/ioutil"
 	"strings"
 	"log"
+	_ "github.com/go-sql-driver/mysql"
+	"database/sql"
 )
 var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(64),
@@ -20,6 +22,10 @@ var cookieHandler = securecookie.New(
 //i'd use myHandler. Notice the case of the first character.		///
 ///////////////////////////////////////////////////////////////////////
 type MyHandler struct {
+}
+
+type db struct {
+	*sql.DB
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -68,18 +74,26 @@ func (this *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 /////////////////////////////////////////////////////////////////////////////////////
 func loginHandler (resp http.ResponseWriter, req *http.Request) {
 //	var redirectTarget = "/"
+//	var qstr string
 	name := req.FormValue("username")
 	password := req.FormValue("password")
  	log.Println("name is " + name)
 	log.Println("pw is " + password)
-	if name != "tada" && password != "tada" && name == "rootonium" && password == "root"{
+	//db.Begin()
+	//qstr = "SELECT userS"
+	//db.Exec(qstr)
+	//db.Query("SELECT users FROM ausers WHERE users.ausername = '" + name + "' AND users.aupassword = '" + password + "'")
+	if name != "tada" && password != "tada" && name == "root" && password == "root"{
 		log.Println("it came inside")
 		setSession(name, resp)
 		http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
+		http.Redirect(resp, req, "http://localhost:7998/templates/hometest.html", http.StatusMovedPermanently)
 //		redirectTarget = "/templates/hometest.html"
 	} else {
-		http.Redirect(resp,req, "/templates/login.html", http.StatusMovedPermanently)
+		http.Redirect(resp,req, "/templates/login.html", 302)
 	}
+
+	//db.Close()
 //	http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
 }
 
@@ -135,10 +149,17 @@ func clearSession (resp http.ResponseWriter){
 
 
 func main() {
+	//database//
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/panton")
+	if err != nil {
+		log.Println(err)
+	}
+	defer db.Close()
+	//database end//
+
 //	router := httprouter.New()
 //	router.GET("/templates/login", loginHandler)
 //  /templates/loginverify.html
-
 	http.HandleFunc("/loginverify", loginHandler)
 	http.Handle("/", new(MyHandler))
 	http.ListenAndServe(":7998", nil)

@@ -26,6 +26,7 @@
       <root url="file://$PROJECT_DIR$/../../src/golang.org/x/tools/go/pointer/testdata" />
       <root url="file://$PROJECT_DIR$/../../src/golang.org/x/tools/cmd/cover/testdata" />
       <root url="file://$PROJECT_DIR$/../../src/golang.org/x/tools/.git" />
+      <root url="file://$PROJECT_DIR$/../../src/github.com/go-sql-driver/mysql/.git" />
       <root url="file://$PROJECT_DIR$/../../src/github.com/julienschmidt/httprouter/.git" />
       <root url="file://$PROJECT_DIR$/../../src/google.golang.org/appengine/.git" />
       <root url="file://$PROJECT_DIR$/../../src/golang.org/x/tools/go/gccgoimporter/testdata" />
