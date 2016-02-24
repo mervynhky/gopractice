@@ -86,8 +86,8 @@ func loginHandler (resp http.ResponseWriter, req *http.Request) {
 	if name != "tada" && password != "tada" && name == "root" && password == "root"{
 		log.Println("it came inside")
 		setSession(name, resp)
-		http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
-		http.Redirect(resp, req, "http://localhost:7998/templates/hometest.html", http.StatusMovedPermanently)
+		//http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
+		http.Redirect(resp, req, "http://localhost:7998/templates/hometest.html", 301)
 //		redirectTarget = "/templates/hometest.html"
 	} else {
 		http.Redirect(resp,req, "/templates/login.html", 302)
