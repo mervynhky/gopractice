@@ -19,6 +19,9 @@
     <!--<link rel="stylesheet" type="text/css" href="../public/css/bootstrap/bootstrap-theme.css">-->
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap/bootstrap.css">
     <script src="../src/js/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-table/src/bootstrap-table.css">
+    <script type="text/javascript" src="../node_modules/bootstrap-table/src/bootstrap-table.js"></script>
+    <script type="text/javascript" src="../node_modules/bootstrap-table/src/locale/bootstrap-table-en-US.js"></script>
     <!-- Bootstrap end -->
     <script type="text/javascript" src="../src/js/home/jquery.fullPage.js"></script>
     <script type="text/javascript" src="../src/js/home/examples.js"></script>
@@ -45,6 +48,36 @@
                 $(this).toggleClass("animated");
             });
         });
+
+        /////////////////////////
+        ///slider tables start///
+        /////////////////////////
+
+        $('#table').bootstrapTable({
+            columns: [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }],
+            data: [{
+                id: 1,
+                name: 'Item 1',
+                price: '$1'
+            }, {
+                id: 2,
+                name: 'Item 2',
+                price: '$2'
+            }]
+        });
+
+        /////////////////////////
+        /// slider tables end ///
+        /////////////////////////
 
         function system_control(){
             alert("system control");
@@ -258,14 +291,103 @@
                 <h4 class="modal-title" id="userManagementmodal">User Management</h4>
             </div>
             <div class="modal-body">
-                <p contenteditable="true">There should be a table here.</p>
-                <p contenteditable="true">List of stuff to do:</p>
-                <p contenteditable="true">1. Prepare Table</p>
-                <p contenteditable="true">2. Pagination</p>
-                <p contenteditable="true">3. Table Functions (sorting and such)</p>
-                <p contenteditable="true">4. System Functions (CRUD)</p>
-                <p contenteditable="true">5. Search Functions</p>
-                <p contenteditable="true">6. Export Functions</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><img style="display: inline-block; text-align:center; height: 90px; width: 90px;" src="imgs/SystemControl/adduser.png"></th>
+                            <th><img style="display: inline-block; text-align:center; margin-left:35px; height: 100px; width: 100px;" src="imgs/SystemControl/edituser.png"></th>
+                            <th><img style="display: inline-block; text-align:center; margin-left:35px; height: 90px; width: 90px;" src="imgs/SystemControl/deleteuser.png"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align:center;">Add</td>
+                            <td style="text-align:center;">Edit</td>
+                            <td style="text-align:center;">Delete</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--<img style="display: inline-block; height: 90px; width: 90px;" src="imgs/SystemControl/adduser.png">-->
+                <!--<img style="display: inline-block; margin-left:20px; height: 100px; width: 100px;" src="imgs/SystemControl/edituser.png">-->
+                <!--<img style="display: inline-block; margin-left:20px; height: 100px; width: 100px;" src="imgs/SystemControl/edituser.png">-->
+                <table id="table" data-toggle="table" data-sort-name="full_name" data-sort-order="desc" data-page-list="[1, 5, 10, 20, 50, 100, 200]" data-query-params="queryParams" data-pagination="true" data-search="true">
+                    <thead style="font-weight:bolder">
+                        <tr>
+                            <th data-field="user_check" data-checkbox="true"></th>
+                            <th data-field="user_id" data-sortable="true">ID</th>
+                            <th data-field="full_name" data-sortable="true">Full Name</th>
+                            <th data-field="user_name" data-sortable="true">Username</th>
+                            <th data-field="user_pos" data-sortable="true">Position</th>
+                            <th data-field="user_dept" data-sortable="true">Department</th>
+                            <th data-field="user_mail" data-sortable="true">E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>1</td>
+                            <td>Administrator</td>
+                            <td>root</td>
+                            <td>Administrator</td>
+                            <td>Admin</td>
+                            <td>root@root.com</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>2</td>
+                            <td>Sample Man</td>
+                            <td>test</td>
+                            <td>Tester</td>
+                            <td>Testing</td>
+                            <td>test@root.com</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>3</td>
+                            <td>Ikan Leung</td>
+                            <td>yileung</td>
+                            <td>Singer</td>
+                            <td>Arts</td>
+                            <td>fish@root.com</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>4</td>
+                            <td>Donkey Man</td>
+                            <td>donkeyman</td>
+                            <td>Donkey</td>
+                            <td>Animals</td>
+                            <td>Donkey@root.com</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>5</td>
+                            <td>Medium Fish</td>
+                            <td>ngamyui</td>
+                            <td>Fisherman</td>
+                            <td>Agriculture</td>
+                            <td>Medium@root.com</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>6</td>
+                            <td>Small Fish</td>
+                            <td>saiyui</td>
+                            <td>Manerfish</td>
+                            <td>Mangraculture</td>
+                            <td>Small@root.com</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>7</td>
+                            <td>Big Fish</td>
+                            <td>taiyui</td>
+                            <td>Fishing Rod</td>
+                            <td>Foods</td>
+                            <td>Big@root.com</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
