@@ -83,7 +83,7 @@ func loginHandler (resp http.ResponseWriter, req *http.Request) {
 	//qstr = "SELECT userS"
 	//db.Exec(qstr)
 	//db.Query("SELECT users FROM ausers WHERE users.ausername = '" + name + "' AND users.aupassword = '" + password + "'")
-	if name != "tada" && password != "tada" && name == "root" && password == "root"{
+	if name != "tada" && password != "tada"{
 		log.Println("it came inside")
 		setSession(name, resp)
 		//http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)

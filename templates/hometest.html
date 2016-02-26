@@ -4,9 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pantonius Home</title>
-    <meta name='description' content='descrip'>
-    <meta name='keywords' content='keywords'>
-    <meta name='author' content='author'>
+    <meta name='Lord' content='Mervyn'>
     <link rel="stylesheet" type="text/css" href="../public/css/home/slidemenu.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../public/css/home/jquery.fullPage.css"/>
@@ -48,6 +46,8 @@
                 $(this).toggleClass("animated");
             });
         });
+
+        if($(".modal").hasClass())
 
         /////////////////////////
         ///slider tables start///
@@ -109,6 +109,7 @@
             background-color:grey;
             border-color:ghostwhite;
             text-colour:white;
+            font-weight: bold;
             text-shadow: 0px 0px 5px snow;
 
             left: 90%;
@@ -119,7 +120,7 @@
             margin-bottom:10px;
         }
         #userinfo{
-            width:250px;
+            width:300px;
             left:75%;
             top:12%;
             position: absolute;
@@ -128,11 +129,17 @@
         }
 
         #userinfo img{
+            display:block;
+            margin:auto;
             width:250px;
             height:175px;
             @border-radius-base: 4px;
             @border-radius-large: 6px;
             @border-radius-large: 3px;
+        }
+
+        .intro{
+            margin-top: 10%;
         }
 
 
@@ -177,37 +184,21 @@
                 </tr>
                 <tr>
                     <th scope="row">Position:</th>
-                    <td>Warrior</td>
+                    <td>Small Fry</td>
                 </tr>
                 <tr>
                     <th scope="row">Department:</th>
-                    <td>WWE & UFC</td>
+                    <td>Wrestling</td>
                 </tr>
                 </tbody>
             </table>
-
-
-            <!--<table id="tbuserinfo" class="table table-inverse table-condensed"> &lt;!&ndash;will test again with mysql plugins&ndash;&gt;-->
-                <!--<tr>-->
-                    <!--<th style="">Name: </th>-->
-                    <!--<th>Brock Lesnar</th>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<th>Position: </th>-->
-                    <!--<th>Warrior</th>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td>Department: </td>-->
-                    <!--<td>WWE & UFC</td>-->
-                <!--</tr>-->
-            <!--</table>-->
         </div>
         <button id="logoutbutton" class="btn btn-primary btn-md">Logout</button>
     </div>
     <div class="section" id="section1">
         <div class="slide">
             <div class="intro">
-                <h1 style="padding-top:75px; font-size:100px;">System Control</h1>
+                <h1 style="font-size:100px;">System Control</h1>
                 <p>Manage Everything Here!</p>
                 <img src="imgs/iphone-blue.png"/>
             </div>
@@ -307,10 +298,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <!--<img style="display: inline-block; height: 90px; width: 90px;" src="imgs/SystemControl/adduser.png">-->
-                <!--<img style="display: inline-block; margin-left:20px; height: 100px; width: 100px;" src="imgs/SystemControl/edituser.png">-->
-                <!--<img style="display: inline-block; margin-left:20px; height: 100px; width: 100px;" src="imgs/SystemControl/edituser.png">-->
-                <table id="table" data-toggle="table" data-sort-name="full_name" data-sort-order="desc" data-page-list="[1, 5, 10, 20, 50, 100, 200]" data-query-params="queryParams" data-pagination="true" data-search="true">
+                <table id="user_table" data-toggle="table" data-sort-name="full_name" data-sort-order="desc" data-page-list="[1, 5, 10, 20, 50, 100, 200]" data-query-params="queryParams" data-pagination="true" data-search="true">
                     <thead style="font-weight:bolder">
                         <tr>
                             <th data-field="user_check" data-checkbox="true"></th>
@@ -405,14 +393,77 @@
                 <h4 class="modal-title" id="groupManagementmodal">Group Management</h4>
             </div>
             <div class="modal-body">
-                <p contenteditable="true">There should be a table here.</p>
-                <p contenteditable="true">List of stuff to do:</p>
-                <p contenteditable="true">1. Prepare Table</p>
-                <p contenteditable="true">2. Pagination</p>
-                <p contenteditable="true">3. Table Functions (sorting and such)</p>
-                <p contenteditable="true">4. System Functions (CRUD)</p>
-                <p contenteditable="true">5. Search Functions</p>
-                <p contenteditable="true">6. Export Functions</p>
+                <table>
+                    <thead>
+                    <tr>
+                        <th><img style="display: inline-block; text-align:center; height: 90px; width: 90px;" src="imgs/SystemControl/adduser.png"></th>
+                        <th><img style="display: inline-block; text-align:center; margin-left:35px; height: 100px; width: 100px;" src="imgs/SystemControl/edituser.png"></th>
+                        <th><img style="display: inline-block; text-align:center; margin-left:35px; height: 90px; width: 90px;" src="imgs/SystemControl/deleteuser.png"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="text-align:center;">Add</td>
+                        <td style="text-align:center;">Edit</td>
+                        <td style="text-align:center;">Delete</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table id="group_table" data-toggle="table" data-sort-name="group_name" data-sort-order="desc" data-page-list="[1, 5, 10, 20, 50, 100, 200]" data-query-params="queryParams" data-pagination="true" data-search="true">
+                    <thead style="font-weight:bolder">
+                    <tr>
+                        <th data-field="group_check" data-checkbox="true"></th>
+                        <th data-field="group_id" data-sortable="true">ID</th>
+                        <th data-field="group_name" data-sortable="true">Group Name</th>
+                        <th data-field="group_usernum" data-sortable="true">Total Users</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                        <td>1</td>
+                        <td>Administrator</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>2</td>
+                        <td>Sample</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>3</td>
+                        <td>Ikan</td>
+                        <td>1021</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>4</td>
+                        <td>Donkey</td>
+                        <td>816</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>5</td>
+                        <td>Medium</td>
+                        <td>616</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>6</td>
+                        <td>Small</td>
+                        <td>382</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>7</td>
+                        <td>Big</td>
+                        <td>931</td>
+                    </tr>
+                    </tbody>
+                </table>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

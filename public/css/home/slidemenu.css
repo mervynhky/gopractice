@@ -101,7 +101,7 @@ button::-moz-focus-inner {
 .nav-list {
     cursor: pointer;
     list-style-type: none;
-    top: 65%;
+    top: 45%;
     left:43px;
     text-align: center;
     position: relative;
