@@ -150,7 +150,7 @@ func clearSession (resp http.ResponseWriter){
 
 func main() {
 	//database//
-	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/panton")
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/gotest")
 	if err != nil {
 		log.Println(err)
 	}
