@@ -73,28 +73,45 @@ func (this *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 /// Will add a "loginfailed" page in future.                                      ///
 /////////////////////////////////////////////////////////////////////////////////////
 func loginHandler (resp http.ResponseWriter, req *http.Request) {
-//	var redirectTarget = "/"
-//	var qstr string
+
 	name := req.FormValue("username")
 	password := req.FormValue("password")
  	log.Println("name is " + name)
 	log.Println("pw is " + password)
-	//db.Begin()
-	//qstr = "SELECT userS"
-	//db.Exec(qstr)
-	//db.Query("SELECT users FROM ausers WHERE users.ausername = '" + name + "' AND users.aupassword = '" + password + "'")
-	if name != "tada" && password != "tada"{
-		log.Println("it came inside")
-		setSession(name, resp)
-		//http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
-		http.Redirect(resp, req, "http://localhost:7998/templates/hometest.html", 301)
-//		redirectTarget = "/templates/hometest.html"
-	} else {
-		http.Redirect(resp,req, "/templates/login.html", 302)
+
+
+	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/gotest")
+	if err != nil {
+		log.Println(err)
 	}
 
-	//db.Close()
-//	http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
+	rows, err := db.Query("SELECT * FROM usertable WHERE USERNAME='" + name + "' AND PASSWORD='" + password + "'")
+	if err != nil {
+		log.Println(err)
+	}
+
+	for rows.Next() {
+		var nodeid int
+		var username string
+		var upassword string
+		err = rows.Scan(&nodeid, &username, &upassword)
+		if err != nil {
+			log.Println(err)
+		}
+		log.Println(nodeid)
+		log.Println(username)
+		log.Println(upassword)
+
+		if name == username && password == upassword {
+			log.Println("it came inside")
+			setSession(name, resp)
+			//http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
+			http.Redirect(resp, req, "http://localhost:7998/templates/hometest.html", 302)
+		} else {
+			http.Redirect(resp, req, "/templates/login.html", 302)
+		}
+	}
+	db.Close()
 }
 
 
@@ -150,11 +167,6 @@ func clearSession (resp http.ResponseWriter){
 
 func main() {
 	//database//
-	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/gotest")
-	if err != nil {
-		log.Println(err)
-	}
-	defer db.Close()
 	//database end//
 
 //	router := httprouter.New()
