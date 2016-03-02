@@ -105,6 +105,7 @@ func loginHandler (resp http.ResponseWriter, req *http.Request) {
 		if name == username && password == upassword {
 			log.Println("it came inside")
 			setSession(name, resp)
+			//http.Redirect(resp, req, "/templates/hometest.html", http.StatusFound)
 			//http.Redirect(resp, req, "/templates/hometest.html", http.StatusMovedPermanently)
 			http.Redirect(resp, req, "http://localhost:7998/templates/hometest.html", 302)
 		} else {
