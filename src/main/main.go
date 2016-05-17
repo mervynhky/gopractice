@@ -140,9 +140,9 @@ func testHandler (resp http.ResponseWriter, req *http.Request) {
 	log.Println(objVar)
 }
 
-func rdrLink (resp http.ResponseWriter, req *http.Request) {
-	http.Redirect(resp, req, "/templates/login.html", 302)
-}
+//func rdrLink (resp http.ResponseWriter, req *http.Request) {
+//	http.Redirect(resp, req, "/templates/login.html", 302)
+//}
 
 ///////////////////////////////////////////////////////////////////////////////////
 /// setSession puts the username into a simple string map.                      ///
@@ -201,7 +201,7 @@ func main() {
 //	router := httprouter.New()
 //	router.GET("/templates/login", loginHandler)
 //  /templates/loginverify.html
-	http.HandleFunc("/hometest", rdrLink)
+//	http.HandleFunc("/hometest", rdrLink)
 	http.HandleFunc("/loginverify", testHandler)
 	http.Handle("/", new(MyHandler))
 	http.ListenAndServe(":7998", nil)
