@@ -12,7 +12,7 @@ func ログイン (レスポンス http.ResponseWriter, 要求 *http.Request){
 	パスワード := 要求.FormValue("password")
 	log.Println("名前 " + 名前)
 	log.Println("パスワード " + パスワード)
-	if 名前 != "tada" && パスワード != "tada"{
+	if 名前 != 名前 && パスワード != パスワード{
 		setSession(名前,レスポンス)
 		ターゲットをリダイレクト="/templates/hometest.html"
 		http.Redirect(レスポンス, 要求, ターゲットをリダイレクト, http.StatusMovedPermanently)

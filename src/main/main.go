@@ -11,16 +11,17 @@ import (
 	"log"
 	_ "github.com/go-sql-driver/mysql"
 	"database/sql"
+	"encoding/json"
 )
 var cookieHandler = securecookie.New(
 	securecookie.GenerateRandomKey(64),
 	securecookie.GenerateRandomKey(32))
 //var router = mux.NewRouter()
 
-///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 //in this case, MyHandler is private, if I wanted it to be public,	///
 //i'd use myHandler. Notice the case of the first character.		///
-///////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 type MyHandler struct {
 }
 
@@ -28,12 +29,12 @@ type db struct {
 	*sql.DB
 }
 
-///////////////////////////////////////////////////////////////////////////////////////
-//attaches the method ServeHTTP to the MyHandler struct.							///
-//if written like func ServeHTTP(blabla){} , it is a function,						///
+///////////////////////////////////////////////////////////////////////////////////////////
+//attaches the method ServeHTTP to the MyHandler struct.				///
+//if written like func ServeHTTP(blabla){} , it is a function,				///
 // but with the (this *MyHandler) it becomes a method of any instance of  MyHandler	///
-// so, MyHandler receives the method ServeHTTP										///
-///////////////////////////////////////////////////////////////////////////////////////
+// so, MyHandler receives the method ServeHTTP						///
+///////////////////////////////////////////////////////////////////////////////////////////
 func (this *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
 	log.Println(path)
@@ -115,6 +116,33 @@ func loginHandler (resp http.ResponseWriter, req *http.Request) {
 	db.Close()
 }
 
+////////////////////////////////////////
+/// 		Testing              ///
+////////////////////////////////////////
+type Label struct {
+	Name string
+	Posts []Post
+}
+
+type Post struct {
+	Start int
+	Length int
+}
+
+func testHandler (resp http.ResponseWriter, req *http.Request) {
+	var objVar []Label
+	log.Println(json.NewDecoder(req.Body).Decode(&objVar))
+	decoder := json.NewDecoder(req.Body)
+	err := decoder.Decode(&objVar)
+	if err != nil {
+		log.Println("error")
+	}
+	log.Println(objVar)
+}
+
+func rdrLink (resp http.ResponseWriter, req *http.Request) {
+	http.Redirect(resp, req, "/templates/login.html", 302)
+}
 
 ///////////////////////////////////////////////////////////////////////////////////
 /// setSession puts the username into a simple string map.                      ///
@@ -173,7 +201,8 @@ func main() {
 //	router := httprouter.New()
 //	router.GET("/templates/login", loginHandler)
 //  /templates/loginverify.html
-	http.HandleFunc("/loginverify", loginHandler)
+	http.HandleFunc("/hometest", rdrLink)
+	http.HandleFunc("/loginverify", testHandler)
 	http.Handle("/", new(MyHandler))
 	http.ListenAndServe(":7998", nil)
 }

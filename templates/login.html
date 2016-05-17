@@ -22,54 +22,102 @@
 <script type="text/javascript" src="../src/js/jquery/jquery-1.6.2.js"></script>
 <script type="text/javascript">
 
-        $(document).ready(function(){
-            $('#username').keypress(function(e){
-                if(e.keyCode==13)
-                    $('#loginButton').click();
-            });
-
-            $('#password').keypress(function(e){
-                if(e.keyCode==13)
-                    $('#loginButton').click();
-            });
+    $(document).ready(function () {
+        $('#username').keypress(function (e) {
+            if (e.keyCode == 13)
+                $('#loginButton').click();
         });
 
-        function submitLogin() {
-            var username = $('#username').val();
-            var password = $('#password').val();
-            if (username == null || password == null || username == "" || password == "") {
-                alert("Please check your username and/or password.")
-                return false;
-            }
-            $.post("http://localhost:7998/loginverify", {
-                type: 'POST',
-                username: username,
-                password: password
-            })
-            window.location.href = "http://localhost:7998/templates/hometest.html"
-        }
+        $('#password').keypress(function (e) {
+            if (e.keyCode == 13)
+                $('#loginButton').click();
+        });
+    });
 
-//        function submitLogin(){
-//            var username = $('#username').val();
-//            var password = $('#password').val();
-//            if(username == null || password == null || username == "" || password == ""){
-//                alert("Please check your username and/or password.")
-//                return false ;
-//            }
-//            $.post("http://localhost:7998/loginverify",
-//                    {
-//                        username: username,
-//                        password: password
-//                    },
-//                    function(data,status){
-////                        alert("Data: " + data + "\nStatus: " + status);
-//                        if(status){
-//                            window.location.href = "http://localhost:7998/templates/hometest.html"
-//                        } else {
-//                            window.location.href = "http://localhost:7998/templates/errorpage.html"
-//                        }
-//                    });
-//        }
+    function submitLogin() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if (username == null || password == null || username == "" || password == "") {
+            alert("Please check your username and/or password.")
+            return false;
+        }
+        $.post("http://localhost:7998/loginverify", {
+            type: 'POST',
+            username: username,
+            password: password
+        })
+        window.location.href = "http://localhost:7998/templates/hometest.html"
+    }
+
+    function rdrLink() {
+        $.post("http://localhost:7998/loginverify", {
+            type: 'POST'
+        })
+    }
+
+    function testPost(){
+        var obj = [
+            {
+                Name: "Label",
+                Posts: [
+                    {
+                        Start: 12,
+                        Length: 8
+                    },
+                    {
+                        Start: 21,
+                        Length: 7
+                    }
+                ]
+            },
+            {
+                Name: "Title",
+                Posts: [
+                    {
+                        Start: 42,
+                        Length: 18
+                    },
+                    {
+                        Start: 72,
+                        Length: 12
+                    }
+                ]
+            }
+        ]
+        alert("logging console: " + JSON.stringify(obj));
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:7998/loginverify',
+            data: JSON.stringify(obj), // or JSON.stringify ({name: 'jonas'}),
+            success: function(data) { console.log('data: ' + data); },
+//            crossDomain: true,
+//            async: true,
+            contentType: "application/json",
+            dataType: 'json'
+        });
+    }
+
+    //        function submitLogin(){
+    //            var username = $('#username').val();
+    //            var password = $('#password').val();
+    //            if(username == null || password == null || username == "" || password == ""){
+    //                alert("Please check your username and/or password.")
+    //                return false ;
+    //            }
+    //            $.post("http://localhost:7998/loginverify",
+    //                    {
+    //                        username: username,
+    //                        password: password
+    //                    },
+    //                    function(data,status){
+    ////                        alert("Data: " + data + "\nStatus: " + status);
+    //                        if(status){
+    //                            window.location.href = "http://localhost:7998/templates/hometest.html"
+    //                        } else {
+    //                            window.location.href = "http://localhost:7998/templates/errorpage.html"
+    //                        }
+    //                    });
+    //        }
 </script>
 <!--
 ********************
@@ -79,18 +127,22 @@
 
 
 <body>
-    <div class="fadeIn animated">
-        <img class="scaling login-logo" src="../public/img/testbluez.png">
-        <div class="header">
-            <div>Panton<span>EDMS</span></div>
-        </div>
+<div class="fadeIn animated">
+    <img class="scaling login-logo" src="../public/img/testbluez.png">
 
-        <br>
-        <form action="/loginverify" method="POST" class="login">
-            <input type="text" id="username" placeholder="username" name="username" on><br>
-            <input type="password" id="password" placeholder="password" name="password"><br>
-            <input type="button" id="loginButton" value="Login" onclick="submitLogin()"><br>
-        </form>
+    <div class="header">
+        <div>Panton<span>EDMS</span></div>
     </div>
+
+    <br>
+
+    <form action="/loginverify" method="POST" class="login">
+        <input type="text" id="username" placeholder="username" name="username" on><br>
+        <input type="password" id="password" placeholder="password" name="password"><br>
+        <input type="button" id="loginButton" value="Login" onclick="submitLogin()"><br>
+    </form>
+    <input type="button" id="rdrlink" onclick="rdrLink()" value="redirect"><br>
+    <input style="margin-left:50%; margin-top:10%;" type="button" id="postData" value="Post Data" onclick="testPost()"><br>
+</div>
 </body>
 </html>
