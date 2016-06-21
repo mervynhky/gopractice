@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu</title>
     <link href="CSS/font-awesome-4.6.3/css/font-awesome.css" rel="stylesheet" />
+    <link href="search/styles.css" rel="stylesheet"/>
     <script type="text/javascript" src="jQuery/jquery-1.12.0.js"></script>
+    <script type="text/javascript" src="search/script.js"></script>
     <script type="text/javascript">
         
         function loadContents(page) {
@@ -16,7 +18,7 @@
                 siteWrapper.load('../Test/login.html');
             }
             if (pageType == "search") {
-                siteWrapper.load("search.html");
+                siteWrapper.load("search/search.html");
             }
             if (pageType == "repo") {
                 siteWrapper.load("repository.html");
@@ -55,6 +57,7 @@
             /* non-critical appearance styles */
             list-style: none;
             background: #111;
+            overflow:scroll;
         }
 
         /* Navigation Menu - List items */
@@ -63,6 +66,7 @@
             width: 250px;
             border-top: 1px solid #111;
             border-bottom: 1px solid #000;
+            text-align:center; /*test*/
         }
 
         .nav-item:hover {
@@ -72,10 +76,11 @@
         .nav-item a {
             /* non-critical appearance styles */
             display: block;
-            padding: 1em;
+            padding: 0.75em;
             background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
             color: white;
-            font-size: 1.2em;
+            /*font-size: 1.2em;*/
+            font-size: 2em; /*test*/
             text-decoration: none;
             transition: color 0.2s, background 0.5s;
         }
@@ -91,6 +96,7 @@
             width: 250px;
             border-top: 1px solid #111;
             border-bottom: 1px solid #000;
+            text-align:center;
         }
 
         .nav-cat a {
@@ -182,16 +188,28 @@
 </head>
 <body>
 
+<!--<ul class="navigation">-->
+    <!--<li class="nav-item"><a onclick="return loadContents('home');"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>-->
+    <!--<li class="nav-item"><a onclick="return loadContents('search');"><i class="fa fa-search" aria-hidden="true"></i> Search</a></li>-->
+    <!--<li class="nav-item"><a onclick="return loadContents('repo');"><i class="fa fa-files-o" aria-hidden="true"></i> Repository</a></li>-->
+    <!--<li class="nav-item"><a onclick="return loadContents('task');"><i class="fa fa-tasks" aria-hidden="true"></i> Task Manager</a></li>-->
+    <!--<li class="nav-cat"><a>Adminstrative Tools</a></li>-->
+    <!--<li class="nav-item"><a onclick="return loadContents('prog');"><i class="fa fa-cogs" aria-hidden="true"></i> Process Organiser</a></li>-->
+    <!--<li class="nav-item"><a onclick="return loadContents('syscon');"><i class="fa fa-wrench" aria-hidden="true"></i> System Control</a></li>-->
+    <!--<li class="nav-item"><a onclick="return loadContents('ntf');"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Notification</a></li>-->
+    <!--<li class="nav-item" style="margin-left:2px;"><a onclick="return loadContents('log');"><i class="fa fa-wpforms" aria-hidden="true"></i> Log</a></li>-->
+<!--</ul>-->
+
 <ul class="navigation">
-    <li class="nav-item"><a onclick="return loadContents('home');"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-    <li class="nav-item"><a onclick="return loadContents('search');"><i class="fa fa-search" aria-hidden="true"></i> Search</a></li>
-    <li class="nav-item"><a onclick="return loadContents('repo');"><i class="fa fa-files-o" aria-hidden="true"></i> Repository</a></li>
-    <li class="nav-item"><a onclick="return loadContents('task');"><i class="fa fa-tasks" aria-hidden="true"></i> Task Manager</a></li>
+    <li class="nav-item"><a onclick="return loadContents('home');"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a onclick="return loadContents('search');"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a onclick="return loadContents('repo');"><i class="fa fa-files-o" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a onclick="return loadContents('task');"><i class="fa fa-tasks" aria-hidden="true"></i></a></li>
     <li class="nav-cat"><a>Adminstrative Tools</a></li>
-    <li class="nav-item"><a onclick="return loadContents('prog');"><i class="fa fa-cogs" aria-hidden="true"></i> Process Organiser</a></li>
-    <li class="nav-item"><a onclick="return loadContents('syscon');"><i class="fa fa-wrench" aria-hidden="true"></i> System Control</a></li>
-    <li class="nav-item"><a onclick="return loadContents('ntf');"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Notification</a></li>
-    <li class="nav-item" style="margin-left:2px;"><a onclick="return loadContents('log');"><i class="fa fa-wpforms" aria-hidden="true"></i> Log</a></li>
+    <li class="nav-item"><a onclick="return loadContents('prog');"><i class="fa fa-cogs" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a onclick="return loadContents('syscon');"><i class="fa fa-wrench" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a onclick="return loadContents('ntf');"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></a></li>
+    <li class="nav-item" style="margin-left:2px;"><a onclick="return loadContents('log');"><i class="fa fa-wpforms" aria-hidden="true"></i></a></li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
