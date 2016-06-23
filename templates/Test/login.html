@@ -8,7 +8,13 @@
     <script type="text/javascript">
 
         function loginHandle() {
-            window.location.href = 'index.html';
+            var username = $('#uname').val();
+            var password = $('#pwrd').val();
+            if (username && password != "root"){
+                alert("incorrect bullshit");
+            } else {
+                window.location.href = 'index.html';
+            }
         }
     </script>
     <style>
@@ -169,11 +175,18 @@
     <!--<source src="http://shortcodelic1.manuelmasiacsasi.netdna-cdn.com/themes/geode/wp-content/uploads/2014/04/milky-way-river-1280hd.mp4.mp4"-->
     <!--type="video/mp4">-->
     <!--</video>-->
-    <video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto" loop>
+    <video id="Video1" class="bgvid back" autoplay="false"  preload="auto" loop> <!--muted="muted"-->
         <source src="cgi.mp4"
                 type="video/mp4">
     </video>
-    <img src="frame.png" style="width:452px; height:480px; top: 65px; left:450px; position:absolute; z-index:1;">
+    <img src="frame.png" style="
+    width:470px;
+    height:530px;
+    top:calc(43.7vh - 200px);
+    left:calc(48.3vw - 200px);
+    position:absolute;
+    z-index:1;
+    ">
     <div class="inner-container shadow10">
         <!--<video id="Video2" class="bgvid inner" autoplay="false" muted="muted" preload="auto" loop>-->
         <!--<source src="http://shortcodelic1.manuelmasiacsasi.netdna-cdn.com/themes/geode/wp-content/uploads/2014/04/milky-way-river-1280hd.mp4.mp4"-->
@@ -185,8 +198,8 @@
         <!--</video>-->
         <div class="box">
             <h1>Panton 10</h1>
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
+            <input id="uname" type="text" placeholder="Username"/>
+            <input id="pwrd" type="password" placeholder="Password"/>
             <button onclick="loginHandle()">Login</button>
             <button style="
                 background-color: #333333;
