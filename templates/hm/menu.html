@@ -11,7 +11,20 @@
     <!--<script type="text/javascript" src="search/script.js"></script>-->
     <link rel="stylesheet" href="assets/css/logstyle.css">
     <script type="text/javascript">
-        
+
+        var buttonClick = document.getElementById('labelID');
+        buttonClick.attachEvent('onclick', zIndexChanger);
+
+        function zIndexChanger() {
+
+            if (document.getElementById('navigator').style.zIndex == 2){
+                document.getElementById('navigator').style.zIndex == 1;
+            }
+
+            if (document.getElementById('navigator').style.zIndex == 1){
+                document.getElementById('navigator').style.zIndex == 2;
+            }
+        }
         function loadContents(page) {
             var pageType = page;
             var siteWrapper = $("#siteWrapper");
@@ -54,12 +67,13 @@
             right: 0;
             bottom: 0;
             left: 0;
-            z-index: 0;
+            z-index: 1;
 
             /* non-critical appearance styles */
             list-style: none;
-            background: #111;
-            overflow:scroll;
+            background: transparent;
+            /*background: #111;*/
+            /*overflow:scroll;*/
         }
 
         /* Navigation Menu - List items */
@@ -147,8 +161,10 @@
             height: 30px;
             width: 30px;
             cursor: pointer;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
+            /*background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");*/
+            background-image: url('../Test/assets/img/johncena.jpg');
             background-size: contain;
+            border-radius:10px;
         }
 
         /* Make the Magic Happen */
@@ -202,7 +218,7 @@
     <!--<li class="nav-item" style="margin-left:2px;"><a onclick="return loadContents('log');"><i class="fa fa-wpforms" aria-hidden="true"></i> Log</a></li>-->
 <!--</ul>-->
 
-<ul class="navigation">
+<ul class="navigation" id="navigator">
     <li class="nav-item"><a onclick="return loadContents('home');"><i class="fa fa-home" aria-hidden="true"></i></a></li>
     <li class="nav-item"><a onclick="return loadContents('search');"><i class="fa fa-search" aria-hidden="true"></i></a></li>
     <li class="nav-item"><a onclick="return loadContents('repo');"><i class="fa fa-files-o" aria-hidden="true"></i></a></li>
@@ -215,10 +231,10 @@
 </ul>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger"></label>
+<label id="labelID" for="nav-trigger"></label>
 
-<div class="site-wrap" id="siteWrapper">
-    Contents here.
+<div class="site-wrap">
+    <div id="siteWrapper"></div>
     <!-- insert the rest of your page markup here -->
 </div>
 
