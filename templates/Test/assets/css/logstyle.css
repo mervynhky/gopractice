@@ -38,6 +38,7 @@ body{
   width:100%;
   font-family:Helvetica;
   color:#FEA;
+  z-index:2;
   /*background:rgba(0,0,0,0.13);*/
   background:rgba(0,0,0,0.6);
   /*padding:30px 0px;*/
