@@ -7,7 +7,13 @@
 
     <script type="text/javascript">
 
-        function loginHandle() {
+        function enterSubmit(e) {
+            if (e.keyCode === 13){
+                loginHandle();
+            }
+        }
+
+        function loginHandle(e) {
             var username = $('#uname').val();
             var password = $('#pwrd').val();
             if (username && password != "root"){
@@ -198,8 +204,8 @@
         <!--</video>-->
         <div class="box">
             <h1>Panton 10</h1>
-            <input id="uname" type="text" placeholder="Username"/>
-            <input id="pwrd" type="password" placeholder="Password"/>
+            <input onkeypress="enterSubmit(event)" id="uname" type="text" placeholder="Username"/>
+            <input onkeypress="enterSubmit(event)" id="pwrd" type="password" placeholder="Password"/>
             <button onclick="loginHandle()">Login</button>
             <button style="
                 background-color: #333333;
