@@ -142,11 +142,13 @@ limitations under the License.*/
 
 @media(min-width:768px) {
     .navbar-static-side {
+        top:70px;
         z-index: 1;
         position: fixed;
         width: 250px;
         height: 600px;
         overflow-y:scroll;
+        background-color:#04B173;
     }
 
     .navbar-top-links .dropdown-messages,
