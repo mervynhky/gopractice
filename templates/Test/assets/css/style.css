@@ -142,7 +142,7 @@ limitations under the License.*/
 
 @media(min-width:768px) {
     .navbar-static-side {
-        top:70px;
+        top:69px;
         z-index: 1;
         position: fixed;
         width: 250px;
