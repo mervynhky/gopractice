@@ -146,7 +146,7 @@ limitations under the License.*/
         z-index: 1;
         position: fixed;
         width: 250px;
-        height: 640px;
+        height: 600px;
         overflow-y:scroll;
         background-color:#04B173;
     }
