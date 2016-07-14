@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Management</title>
+    <title>Workspace Management</title>
     <!-- Core CSS - Include with every page -->
     <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -400,7 +400,7 @@
         <div class="row">
             <!-- Page Header -->
             <div class="col-lg-12">
-                <h1 class="page-header">Group Management</h1>
+                <h1 class="page-header">Workspace Management</h1>
             </div>
             <!--End Page Header -->
         </div>
@@ -411,7 +411,7 @@
                 <div class="panel panel-default">
                     <div style="font-weight:bolder; font-size:20px;" class="panel-heading">
                         User List
-                        <button class="btn btn-outline btn-primary" data-toggle="modal" data-target="#addGrp" style="float:right;">Add Group</button>
+                        <button class="btn btn-outline btn-primary" data-toggle="modal" data-target="#addWorkspace" style="float:right;">Add Workspace</button>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -419,26 +419,30 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Group Name</th>
+                                    <th>Workspace ID</th>
+                                    <th>Workspace Name</th>
                                     <th>Number of Members</th>
-                                    <th>Department</th>
+                                    <th>Department Assigned</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr class="gradeX" data-toggle="modal" data-target="#myModal" >
                                     <td>1</td>
+                                    <td>WS001</td>
                                     <td>Equipment</td>
                                     <td>13</td>
                                     <td>Engineering</td>
                                 </tr>
                                 <tr class="gradeX" data-toggle="modal" data-target="#myModal" >
                                     <td>2</td>
+                                    <td>WS002</td>
                                     <td>Engineering</td>
                                     <td>10</td>
                                     <td>Engineering</td>
                                 </tr>
                                 <tr class="gradeX" data-toggle="modal" data-target="#myModal" >
                                     <td>3</td>
+                                    <td>WS003</td>
                                     <td>Manufacturing</td>
                                     <td>41</td>
                                     <td>Manufacturing</td>
@@ -448,22 +452,22 @@
                         </div>
 
                         <!-- Modal Starts -->
-                        <div class="modal fade" id="addGrp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="addWorkspace" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h2 class="modal-title" id="addGrpLabel">Add Group</h2>
+                                        <h2 class="modal-title" id="addWorkspaceLabel">Add Workspace</h2>
                                     </div>
                                     <div class="modal-body">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered table-hover" id="addGroup">
+                                            <table class="table table-striped table-bordered table-hover" id="addWorkspacetb">
                                                 <tr>
-                                                    <td style="font-weight: bold">Group ID:</td>
-                                                    <td><input value="G00"></td>
+                                                    <td style="font-weight: bold">Workspace ID:</td>
+                                                    <td><input value="WS00"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="font-weight: bold">Group Name:</td>
+                                                    <td style="font-weight: bold">Workspace Name:</td>
                                                     <td><input></td>
                                                 </tr>
                                                 <tr>
@@ -594,13 +598,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered table-hover" id="viewGroup">
+                                            <table class="table table-striped table-bordered table-hover" id="viewWorkspace">
                                                 <tr>
-                                                    <td style="font-weight: bold">Group ID:</td>
-                                                    <td>G002</td>
+                                                    <td style="font-weight: bold">Workspace ID:</td>
+                                                    <td>WS002</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="font-weight: bold">Group Name:</td>
+                                                    <td style="font-weight: bold">Workspace Name:</td>
                                                     <td>Engineering</td>
                                                 </tr>
                                                 <tr>
@@ -697,10 +701,10 @@
         $('#dataTables-example').dataTable();
     });
     $(document).ready(function () {
-        $('#addGroup').dataTable();
+        $('#addWorkspacetb').dataTable();
     });
     $(document).ready(function () {
-        $('#viewGroup').dataTable();
+        $('#viewWorkspace').dataTable();
     });
     $( function() {
         $( "#datepicker" ).datepicker();
