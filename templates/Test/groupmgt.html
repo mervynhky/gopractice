@@ -457,7 +457,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered table-hover">
+                                            <table class="table table-striped table-bordered table-hover" id="addGroup">
                                                 <tr>
                                                     <td style="font-weight: bold">Group ID:</td>
                                                     <td><input value="G00"></td>
@@ -594,7 +594,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered table-hover">
+                                            <table class="table table-striped table-bordered table-hover" id="viewGroup">
                                                 <tr>
                                                     <td style="font-weight: bold">Group ID:</td>
                                                     <td>G002</td>
@@ -695,6 +695,12 @@
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
+    });
+    $(document).ready(function () {
+        $('#addGroup').dataTable();
+    });
+    $(document).ready(function () {
+        $('#viewGroup').dataTable();
     });
     $( function() {
         $( "#datepicker" ).datepicker();
