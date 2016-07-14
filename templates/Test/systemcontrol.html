@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blank</title>
+    <title>System Control</title>
     <!-- Core CSS - Include with every page -->
     <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -394,7 +394,7 @@
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Advanced Tables
+                        User List
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -561,19 +561,28 @@
                                                     <td>Manufacturing</td>
                                                 </tr>
                                                 <tr>
-                                                    <td style="font-weight: bold">Attachments:</td>
+                                                    <td style="font-weight: bold">Groups:</td>
                                                     <td>
-                                                        <a href="https://cdn.hashdoc.com/docs/877eb4c4d87015acd45c304cf2444082/images/728x/equipment-lease-agreement-1.png" target="_blank">Equipment_Agreement_002(Image)</a>
-                                                        <a href="http://www.who.int/management/resources/procurement/MedicalSuppliesforPHC(2)Procurement&Management.pdf" target="_blank">Equipment_Agreement_002(PDF)</a>
+                                                        <a>Equipment</a>
+                                                        <a>Engineering</a>
+                                                        <a>Manufacturing</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-weight: bold">Workspaces:</td>
+                                                    <td>
+                                                        <a>Equipment</a>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button style="font-weight: bold" type="button" class="btn btn-outline btn-success btn-md">Edit</button>
-                                        <button style="font-weight: bold" type="button" class="btn btn-outline btn-primary btn-md">Revise</button>
-                                        <button style="font-weight: bold" type="button" class="btn btn-outline btn-danger btn-md">Obsolete</button>
+                                        <button style="font-weight: bold" type="button" class="btn btn-outline btn-primary btn-md">Edit</button>
+                                        <div class="btn-group">
+                                            <button style="font-weight: bold" type="button" class="btn btn-outline btn-success btn-md">Enable</button>
+                                            <button style="font-weight: bold" type="button" class="btn btn-outline btn-danger btn-md">Disable</button>
+                                        </div>
                                         <br>
                                         <br>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -604,6 +613,14 @@
 <script src="assets/plugins/pace/pace.js"></script>
 <script src="assets/scripts/siminta.js"></script>
 
+<!-- Page-Level Plugin Scripts-->
+<script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
 </body>
 
 </html>
