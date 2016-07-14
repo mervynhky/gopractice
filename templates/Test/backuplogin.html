@@ -11,6 +11,29 @@
     <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
    <link href="assets/css/style.css" rel="stylesheet" />
       <link href="assets/css/main-style.css" rel="stylesheet" />
+    <!--<script type="text/javascript">-->
+        <!--var unEnter = $("#uName");-->
+        <!--var pwEnter = $("#pWord");-->
+        <!--unEnter.addEventListener("keydown", enterKey(e));-->
+        <!--pwEnter.addEventListener("keydown", enterKey(e));-->
+
+        <!--function enterKey(e) {-->
+            <!--if (e.keyCode == 13){-->
+                <!--verifyLogin();-->
+            <!--}-->
+        <!--}-->
+
+        <!--function verifyLogin() {-->
+            <!--var uName = $("#uName").val;-->
+            <!--var pWord = $("#pWord").val;-->
+
+            <!--if (uName && pWord == root) {-->
+                <!--window.location.href = "index.html";-->
+            <!--} else {-->
+
+            <!--}-->
+        <!--}-->
+    <!--</script>-->
 
 </head>
 
@@ -23,7 +46,7 @@
               <img src="assets/img/Panton.png" alt=""/>
                 </div>
             <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
+                <div class="login-panel panel panel-default" style="background-color: rgba(0, 0, 0, 0.5);">
                     <div class="panel-heading">
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
@@ -31,13 +54,13 @@
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input id="uName" class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input id="pWord" class="form-control" placeholder="Password" name="password" type="password" value="">
                                 </div>
                                 <div class="checkbox">
-                                    <label>
+                                    <label style="color: #fff;" >
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                     </label>
                                 </div>
